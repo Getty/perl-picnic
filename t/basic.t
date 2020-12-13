@@ -3,9 +3,11 @@ use strict;
 use warnings;
 use Test::More;
 
-plan skip_all => "env var TEST_WWW_PICNIC_USER and TEST_WWW_PICNIC_PASS missing" unless $ENV{TEST_WWW_PICNIC_USER} and $ENV{TEST_WWW_PICNIC_PASS};
+BEGIN {
+  plan skip_all => "env var TEST_WWW_PICNIC_USER and TEST_WWW_PICNIC_PASS missing" unless $ENV{TEST_WWW_PICNIC_USER} and $ENV{TEST_WWW_PICNIC_PASS};
 
-BEGIN { use_ok('WWW::Picnic'); }
+  use_ok('WWW::Picnic');
+}
 
 my $picnic = WWW::Picnic->new(
   user => $ENV{TEST_WWW_PICNIC_USER},
